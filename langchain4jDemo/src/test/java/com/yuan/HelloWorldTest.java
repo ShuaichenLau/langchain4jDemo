@@ -1,13 +1,12 @@
 package com.yuan;
 
 
+import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -26,10 +25,25 @@ public class HelloWorldTest {
     @Autowired
     private OpenAiChatModel openAiChatModel;
 
+
+    @Autowired
+    private ChatLanguageModel chatLanguageModel;
+
+    /**
+     * 2025年6月24日21:38:28
+     */
+    @Test
+    public void testSpringBoot1() {
+        String chat = chatLanguageModel.chat("我是谁?");
+        System.out.println(chat);
+        logger.info(chat);
+    }
+
+
     @Test
     public void testSpringBoot() {
         String chat = openAiChatModel.chat("我是谁?");
-//        System.out.println(chat);
+        System.out.println(chat);
         logger.info(chat);
     }
 
