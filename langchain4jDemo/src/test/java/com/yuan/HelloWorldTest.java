@@ -2,8 +2,12 @@ package com.yuan;
 
 
 import dev.langchain4j.model.openai.OpenAiChatModel;
-import com.yuan.LangChainDemoMain;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -14,7 +18,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = LangChainDemoMain.class)
 public class HelloWorldTest {
 
+    private Logger logger = LoggerFactory.getLogger(HelloWorldTest.class);
 
+    /**
+     *
+     */
+    @Autowired
+    private OpenAiChatModel openAiChatModel;
+
+    @Test
+    public void testSpringBoot() {
+        String chat = openAiChatModel.chat("我是谁?");
+//        System.out.println(chat);
+        logger.info(chat);
+    }
+
+    /**
+     *
+     */
     @Test
     public void test() {
 
