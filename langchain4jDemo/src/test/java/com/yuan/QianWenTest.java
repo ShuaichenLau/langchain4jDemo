@@ -4,15 +4,12 @@ package com.yuan;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.community.model.dashscope.WanxImageModel;
 import dev.langchain4j.data.image.Image;
-import dev.langchain4j.model.ollama.OllamaChatModel;
 import dev.langchain4j.model.output.Response;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.net.URI;
 
 /**
  * deepseek-r1 demo 测试
@@ -43,6 +40,9 @@ public class QianWenTest {
     }
 
 
+    /**
+     * 文生图 demo
+     */
     @Test
     public void testDashScopeWanx() {
         WanxImageModel wanxImageModel = WanxImageModel.builder().modelName("wanx2.1-t2i-turbo")
