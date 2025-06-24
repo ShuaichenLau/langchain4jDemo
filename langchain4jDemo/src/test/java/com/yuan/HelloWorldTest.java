@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = LangChainDemoMain.class)
 public class HelloWorldTest {
 
-    private Logger logger = LoggerFactory.getLogger(HelloWorldTest.class);
+    private final Logger logger = LoggerFactory.getLogger(HelloWorldTest.class);
 
     /**
      *
