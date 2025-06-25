@@ -55,6 +55,16 @@ public class QianWenTest {
                 "物丛生，营造出神秘而梦幻的氛围。");
         logger.info("{}", imageResponse.content().url());
 
+        // https://www.bilibili.com/video/BV1cpLTz1EVp?spm_id_from=333.788.player.switch&vd_source=ceb671c2d6d65ca9240098b709c35ceb&p=15
+        // https://docs.langchain4j.dev/tutorials/spring-boot-integration
+
+        // file:///D:/BaiduNetdiskDownload/%E5%B0%9A%E7%A1%85%E8%B0%B7AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%80%81/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/%E7%A1%85%E8%B0%B7%E5%B0%8F%E6%99%BA%EF%BC%88%E5%8C%BB%E7%96%97%E7%89%88%EF%BC%89/%E8%AF%BE%E4%BB%B6/%E5%B0%9A%E7%A1%85%E8%B0%B7-Java+%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8-%E7%A1%85%E8%B0%B7%E5%B0%8F%E6%99%BA%EF%BC%88%E5%8C%BB%E7%96%97%E7%89%88%EF%BC%89.pdf
+
+        // file:///D:/Users/WeChat%20Files/lliujian8485/FileStorage/File/2025-06/20250430Java+%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C-pdf%E5%8D%95%E9%A1%B5.pdf
+
+        // https://bailian.console.aliyun.com/?spm=5176.12818093_47.console-base_product-drawer-right.dsfm.46be2cc9sf6PWA&tab=api#/api/?type=model&url=https%3A%2F%2Fhelp.aliyun.com%2Fdocument_detail%2F2862677.html
+
+        // https://ollama.com/library/deepseek-r1:latest
 
     }
 
