@@ -22,6 +22,4 @@ public class ChatMemoryTest {
         System.out.println(answer2);
     }
 
-
-
 }
