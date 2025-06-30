@@ -3,6 +3,7 @@ package com.yuan;
 import com.yuan.assistant.Assistant;
 import com.yuan.assistant.AssistantV1;
 import com.yuan.assistant.MemoryChatAssistant;
+import com.yuan.assistant.SeparateChatAssistant;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.UserMessage;
@@ -24,6 +25,24 @@ public class AIServiceTest {
 
     @Autowired
     private QwenChatModel qwenChatModel;
+
+
+
+    @Autowired
+    private SeparateChatAssistant separateChatAssistant;
+    @Test
+    public void testChatMemory5(){
+
+        String chat1 = separateChatAssistant.chat(1,"我是hanx");
+        logger.info("1输出大语言模型回复 : {}", chat1);
+        String chat2 = separateChatAssistant.chat(1,"你能说出我是谁吗?");
+        logger.info("2输出大语言模型回复 : {}", chat2);
+
+        String chat3 = separateChatAssistant.chat(2,"你能说出我是谁吗?");
+        logger.info("3输出大语言模型回复 : {}", chat3);
+    }
+
+
 
 
     @Autowired
