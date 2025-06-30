@@ -1,4 +1,4 @@
-package com.yuan;
+package com.yuan.assistant;
 
 
 import dev.langchain4j.service.spring.AiService;

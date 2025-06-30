@@ -1,4 +1,4 @@
-package com.yuan;
+package com.yuan.assistant;
 
 
 public interface Assistant {
