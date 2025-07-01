@@ -23,6 +23,8 @@ import org.bson.types.ObjectId;
 public interface SeparateChatAssistant {
 
     /**
+     *
+     * SystemMessage  提示词
      * 独立隔离的聊天记录会话
      * @param memoryId
      * @param userMessage
@@ -31,7 +33,25 @@ public interface SeparateChatAssistant {
     @SystemMessage("你是我的好朋友，请用东北话回答问题。")
     String chat(@MemoryId ObjectId memoryId, @UserMessage String userMessage);
 
-    String chatOld(@MemoryId int memoryId, @UserMessage String userMessage);
+    /**
+     * current_date 获取今天日期
+     * 提示词中可以引用系统变量，比如今天日期
+     * @param memoryId
+     * @param userMessage
+     * @return
+     */
+    @SystemMessage("你是我的好朋友，请用西安话回答问题。今天是{{current_date}}")
+    String chatXian(@MemoryId ObjectId memoryId, @UserMessage String userMessage);
+
+
+    /**
+     * 提示词模板文件
+     * @param memoryId
+     * @param userMessage
+     * @return
+     */
+    @SystemMessage(fromResource = "my-prompt-template.txt")
+    String chatTemplate(@MemoryId ObjectId memoryId, @UserMessage String userMessage);
 }
 
 

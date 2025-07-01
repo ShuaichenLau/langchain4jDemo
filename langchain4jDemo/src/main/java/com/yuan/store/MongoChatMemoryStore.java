@@ -31,6 +31,7 @@ public class MongoChatMemoryStore implements ChatMemoryStore {
 
     @Override
     public List<ChatMessage> getMessages(Object memoryId) {
+        log.info("获取memoryId:{}", memoryId);
         Criteria criteria = Criteria.where("_id").is(memoryId);
         Query query = new Query(criteria);
         ChatMessages chatMessages = mongoTemplate.findOne(query, ChatMessages.class);
