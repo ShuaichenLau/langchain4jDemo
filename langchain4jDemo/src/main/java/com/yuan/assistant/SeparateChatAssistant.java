@@ -7,6 +7,11 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
 
 /**
  * 可以隔离的聊天记录会话
+ *
+ * AiServiceWiringMode.EXPLICIT
+ *      AUTO,      // 自动绑定，框架根据配置自动选择服务
+ *     EXPLICIT   // 显式绑定，必须手动指定使用哪个服务
+ *
  */
 @AiService(wiringMode = AiServiceWiringMode.EXPLICIT,
         chatMemory = "chatMemory",

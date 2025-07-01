@@ -26,8 +26,6 @@ public class AIServiceTest {
     @Autowired
     private QwenChatModel qwenChatModel;
 
-
-
     @Autowired
     private SeparateChatAssistant separateChatAssistant;
     @Test
@@ -40,11 +38,15 @@ public class AIServiceTest {
 
         String chat3 = separateChatAssistant.chat(2,"你能说出我是谁吗?");
         logger.info("3输出大语言模型回复 : {}", chat3);
+
+        String chat4 = separateChatAssistant.chat(1,"你是哪一种模型？");
+        logger.info("4输出大语言模型回复 : {}", chat4);
     }
 
-
-
-
+    /**
+     * 聊天记忆实现
+     *
+     */
     @Autowired
     private MemoryChatAssistant memoryChatAssistant;
 
