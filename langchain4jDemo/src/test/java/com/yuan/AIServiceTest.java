@@ -4,6 +4,7 @@ import com.yuan.assistant.Assistant;
 import com.yuan.assistant.AssistantV1;
 import com.yuan.assistant.MemoryChatAssistant;
 import com.yuan.assistant.SeparateChatAssistant;
+import com.yuan.assistant.SeparateChatAssistantOld;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.UserMessage;
@@ -28,24 +29,28 @@ public class AIServiceTest {
 
     @Autowired
     private SeparateChatAssistant separateChatAssistant;
-    @Test
-    public void testChatMemory5(){
 
-        String chat1 = separateChatAssistant.chat(1,"我是hanx");
+    @Autowired
+    private SeparateChatAssistantOld separateChatAssistantOld;
+
+    @Test
+    public void testChatMemory5() {
+
+        String chat1 = separateChatAssistantOld.chatOld(1, "我是hanx");
         logger.info("1输出大语言模型回复 : {}", chat1);
-        String chat2 = separateChatAssistant.chat(1,"你能说出我是谁吗?");
+
+        String chat2 = separateChatAssistantOld.chatOld(1, "你能说出我是谁吗?");
         logger.info("2输出大语言模型回复 : {}", chat2);
 
-        String chat3 = separateChatAssistant.chat(2,"你能说出我是谁吗?");
+        String chat3 = separateChatAssistantOld.chatOld(2, "你能说出我是谁吗?");
         logger.info("3输出大语言模型回复 : {}", chat3);
 
-        String chat4 = separateChatAssistant.chat(1,"你是哪一种模型？");
+        String chat4 = separateChatAssistantOld.chatOld(1, "你是哪一种模型？");
         logger.info("4输出大语言模型回复 : {}", chat4);
     }
 
     /**
      * 聊天记忆实现
-     *
      */
     @Autowired
     private MemoryChatAssistant memoryChatAssistant;
@@ -54,7 +59,7 @@ public class AIServiceTest {
      * 聊天记忆实现
      */
     @Test
-    public void testChatMemory4(){
+    public void testChatMemory4() {
         String chat1 = memoryChatAssistant.chat("我是hanx");
         logger.info("1输出大语言模型回复 : {}", chat1);
         String chat2 = memoryChatAssistant.chat("你能说出我是谁吗?");
@@ -66,7 +71,7 @@ public class AIServiceTest {
      * 聊天记忆实现
      */
     @Test
-    public void testChatMemory3(){
+    public void testChatMemory3() {
         // 创建一个“最多保存最近 10 条消息”的记忆对象。超过的旧消息将被丢弃，只保留最新的 10 条对话内容。
         MessageWindowChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(10);
         // 构建一个助理对象，使用指定的语言模型和上述记忆对象。
@@ -83,7 +88,6 @@ public class AIServiceTest {
         // 记录第二次聊天的回复内容，检验记忆功能是否正常工作。
         logger.info("2输出大语言模型回复 : {}", chat2);
     }
-
 
 
     /**

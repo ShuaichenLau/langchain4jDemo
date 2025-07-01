@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /**
@@ -15,12 +16,16 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @Setter
 @Getter
+@Document(collection = "chat_messages")
 public class ChatMessages {
 
     @Id
 //    private Long messageId;
     private ObjectId messageId;
 
+    private String memoryId;
+
     private String content;
+
 
 }

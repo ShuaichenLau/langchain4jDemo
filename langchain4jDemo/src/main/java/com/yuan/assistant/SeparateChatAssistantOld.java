@@ -1,11 +1,9 @@
 package com.yuan.assistant;
 
 import dev.langchain4j.service.MemoryId;
-import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
 import dev.langchain4j.service.spring.AiServiceWiringMode;
-import org.bson.types.ObjectId;
 
 /**
  * 可以隔离的聊天记录会话
@@ -18,19 +16,16 @@ import org.bson.types.ObjectId;
 @AiService(wiringMode = AiServiceWiringMode.EXPLICIT,
         chatMemory = "chatMemory",
         chatModel = "qwenChatModel",
-        chatMemoryProvider = "chatMemoryProvider"
+        chatMemoryProvider = "chatMemoryProviderOld"
 )
-public interface SeparateChatAssistant {
+public interface SeparateChatAssistantOld {
 
     /**
-     * 独立隔离的聊天记录会话
+     *
      * @param memoryId
      * @param userMessage
      * @return
      */
-    @SystemMessage("你是我的好朋友，请用东北话回答问题。")
-    String chat(@MemoryId ObjectId memoryId, @UserMessage String userMessage);
-
     String chatOld(@MemoryId int memoryId, @UserMessage String userMessage);
 }
 
