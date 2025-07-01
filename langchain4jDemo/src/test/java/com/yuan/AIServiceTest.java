@@ -11,6 +11,7 @@ import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.service.AiServices;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,25 @@ public class AIServiceTest {
 
     @Autowired
     private SeparateChatAssistantOld separateChatAssistantOld;
+
+
+    @Test
+    public void testChatMemory7() {
+
+        ObjectId memoryId = new ObjectId("63f7f5f5f5f5f5f5f5f5f5f5");
+
+        String chat1 = separateChatAssistant.chat(memoryId, "我是hanx");
+        logger.info("1输出大语言模型回复 : {}", chat1);
+
+        String chat2 = separateChatAssistant.chat(memoryId, "你能说出我是谁吗?");
+        logger.info("2输出大语言模型回复 : {}", chat2);
+
+        String chat3 = separateChatAssistant.chat(memoryId, "你能说出我是谁吗?");
+        logger.info("3输出大语言模型回复 : {}", chat3);
+
+        String chat4 = separateChatAssistant.chat(memoryId, "你是哪一种模型？");
+        logger.info("4输出大语言模型回复 : {}", chat4);
+    }
 
     @Test
     public void testChatMemory5() {
