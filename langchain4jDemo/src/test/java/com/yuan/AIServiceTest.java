@@ -55,6 +55,18 @@ public class AIServiceTest {
     @Autowired
     private MemoryChatAssistant memoryChatAssistant;
 
+
+    /**
+     * 添加提示词  添加表情符号
+     */
+    @Test
+    public void testChatMemory6() {
+        String chat1 = memoryChatAssistant.chatV1("我是hanx");
+        logger.info("1输出大语言模型回复 : {}", chat1);
+        String chat2 = memoryChatAssistant.chatV1("你能说出我是谁吗?");
+        logger.info("2输出大语言模型回复 : {}", chat2);
+    }
+
     /**
      * 聊天记忆实现
      */

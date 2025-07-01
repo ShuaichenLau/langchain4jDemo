@@ -1,5 +1,6 @@
 package com.yuan.assistant;
 
+import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.spring.AiService;
 import dev.langchain4j.service.spring.AiServiceWiringMode;
 
@@ -21,5 +22,14 @@ public interface MemoryChatAssistant {
      * @return
      */
     String chat(String message);
+
+
+    /**
+     * 聊天
+     * @param message
+     * @return
+     */
+    @SystemMessage("你是我的好朋友，请用西安话回答问题。并且添加一些表情符号.{{it}}")
+    String chatV1(String message);
 
 }
