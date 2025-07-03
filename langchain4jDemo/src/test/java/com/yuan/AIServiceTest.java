@@ -1,5 +1,6 @@
 package com.yuan;
 
+import cn.hutool.core.date.DateUtil;
 import com.yuan.assistant.Assistant;
 import com.yuan.assistant.AssistantV1;
 import com.yuan.assistant.MemoryChatAssistant;
@@ -33,6 +34,22 @@ public class AIServiceTest {
 
     @Autowired
     private SeparateChatAssistantOld separateChatAssistantOld;
+
+
+    /**
+     * 测试聊天记忆功能
+     * @v注解的使用
+     */
+    @Test
+    public void testChatMemory8() {
+
+        logger.info("测试 @V 注解 {}", DateUtil.now());
+        ObjectId memoryId = new ObjectId("63f7f5f5f5f5f5f5f5f5f5f5");
+
+        String chatV1 = separateChatAssistant.chatV1(memoryId, "Hello, 你好啊， 你知道我是谁谁吗？");
+        logger.info("测试@v注解  输出大语言模型回复 : {}", chatV1);
+
+    }
 
 
     @Test
