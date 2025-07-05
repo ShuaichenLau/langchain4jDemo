@@ -3,7 +3,7 @@ package com.yuan;
 /**
  * 新建Demo入口
  */
-public class Main {
+public class HelloWorldMain {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.

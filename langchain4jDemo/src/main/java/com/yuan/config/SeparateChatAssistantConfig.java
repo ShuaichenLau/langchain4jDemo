@@ -32,7 +32,6 @@ public class SeparateChatAssistantConfig {
                 .build();
     }
 
-
     /**
      * chatMemoryProviderOld
      * @return
@@ -46,6 +45,5 @@ public class SeparateChatAssistantConfig {
 //                .chatMemoryStore(mongoChatMemoryStore)
                 .build();
     }
-
 
 }
