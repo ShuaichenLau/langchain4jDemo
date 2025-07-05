@@ -38,6 +38,7 @@ public class AIServiceTest {
 
     /**
      * 测试聊天记忆功能
+     *
      * @v注解的使用
      */
     @Test
@@ -47,6 +48,22 @@ public class AIServiceTest {
         ObjectId memoryId = new ObjectId("63f7f5f5f5f5f5f5f5f5f5f5");
 
         String chatV1 = separateChatAssistant.chatV1(memoryId, "Hello, 你好啊， 你知道我是谁谁吗？");
+        logger.info("测试@v注解  输出大语言模型回复 : {}", chatV1);
+
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testChatMemory9() {
+
+        logger.info("测试 @V 注解 {}", DateUtil.now());
+        ObjectId memoryId = new ObjectId("63f7f5f5f5f5f5f5f5f5f5f5");
+        String userName = "hanx";
+        int age = 18;
+
+        String chatV1 = separateChatAssistant.chatV2(memoryId, "Hello, 你好啊， 你知道我是谁谁吗？知道我多大吗?", userName, age);
         logger.info("测试@v注解  输出大语言模型回复 : {}", chatV1);
 
     }
