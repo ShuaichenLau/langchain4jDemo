@@ -1,4 +1,4 @@
-package com.yuan;
+package com.yuan.game;
 
 import javax.swing.*;
 import java.awt.*;

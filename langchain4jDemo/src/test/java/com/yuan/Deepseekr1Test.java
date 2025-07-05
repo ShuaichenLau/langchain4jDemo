@@ -18,7 +18,6 @@ public class Deepseekr1Test {
 
     private final Logger logger = LoggerFactory.getLogger(Deepseekr1Test.class);
 
-
     /**
      * deepseek-r1
      */
