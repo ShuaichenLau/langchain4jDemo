@@ -43,6 +43,17 @@ public class AppointmentServiceImpl extends ServiceImpl<AppointmentMapper, Appoi
         return appointmentMapper.selectOne(appointmentLambdaQueryWrapper);
     }
 
+    @Override
+    public Appointment getOneV2(Appointment appointment) {
+        LambdaQueryWrapper<Appointment> appointmentLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        appointmentLambdaQueryWrapper.eq(Appointment::getUsername, appointment.getUsername());
+        appointmentLambdaQueryWrapper.eq(Appointment::getIdCard, appointment.getIdCard());
+        appointmentLambdaQueryWrapper.eq(Appointment::getDepartment, appointment.getDepartment());
+        appointmentLambdaQueryWrapper.eq(Appointment::getDate, appointment.getDate());
+        appointmentLambdaQueryWrapper.eq(Appointment::getDoctorName, appointment.getDoctorName());
+        return appointmentMapper.selectOne(appointmentLambdaQueryWrapper);
+    }
+
     /**
      *
      * @param username
@@ -52,5 +63,10 @@ public class AppointmentServiceImpl extends ServiceImpl<AppointmentMapper, Appoi
     @Override
     public Appointment getOneByUsernameAndIdCard(String username, String idCard) {
         return appointmentMapper.getOneByUsernameAndIdCard(username, idCard);
+    }
+
+    @Override
+    public int deleteById(Long id) {
+        return appointmentMapper.deleteById(id);
     }
 }

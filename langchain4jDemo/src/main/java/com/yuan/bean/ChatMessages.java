@@ -16,7 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Setter
 @Getter
-@Document(collection = "chat_messages")
+//@Document(collection = "chat_messages")
+@Document(collection = "chat_xiaozhi_messages") // mongoDB 集合名称
 public class ChatMessages {
 
     @Id

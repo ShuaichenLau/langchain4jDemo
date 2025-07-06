@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 public class Appointment {
 
     @TableId(type = IdType.AUTO)
-    private long id;//  BIGINT NOT NULL AUTO_INCREMENT,
+    private Long id;//  BIGINT NOT NULL AUTO_INCREMENT,
     private String username;//  VARCHAR(50) NOT NULL,
     private String idCard;//  VARCHAR(18) NOT NULL,
     private String department;//  VARCHAR(50) NOT NULL,
@@ -21,11 +21,11 @@ public class Appointment {
     private String time;//  VARCHAR(10) NOT NULL,
     private String doctorName;//  VARCHAR(50) DEFAULT NULL,
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

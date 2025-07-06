@@ -17,7 +17,8 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
 @AiService(wiringMode = AiServiceWiringMode.EXPLICIT,
         chatMemory = "chatMemory",
         chatModel = "qwenChatModel",
-        chatMemoryProvider = "chatMemoryProviderXiaoZhi"
+        chatMemoryProvider = "chatMemoryProviderXiaoZhi",
+        tools = "appointmentTools"
 )
 public interface XiaoZhiAgent {
 
@@ -27,8 +28,10 @@ public interface XiaoZhiAgent {
      * @param userMessage
      * @return
      */
-    @SystemMessage(fromResource = "xiao-zhi-prompt.txt")
+    @SystemMessage(fromResource = "zhaozhi-prompt-template.txt")
     String chat(@MemoryId Object memoryId, @UserMessage String userMessage);
+
+
 }
 
 
