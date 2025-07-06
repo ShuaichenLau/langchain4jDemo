@@ -36,6 +36,19 @@ public class AIServiceTest {
     private SeparateChatAssistantOld separateChatAssistantOld;
 
 
+    @Test
+    public void testChatMemory10() {
+
+        logger.info("测试 @V 注解 {}", DateUtil.now());
+        ObjectId memoryId = new ObjectId("63f7f5f5f5f5f5f5f5f5f5f9");
+
+        String chatV1 = separateChatAssistant.chatV2(memoryId, "Hello, 你好啊， 你帮我计算一下1+10等于多少吗?");
+        logger.info("测试@v注解  输出大语言模型回复 : {}", chatV1);
+
+        String chatV2 = separateChatAssistant.chatV2(memoryId, "Hello, 你好啊， 你帮我计算一下8888888的平方根是多少吗?");
+        logger.info("测试@v注解  输出大语言模型回复 : {}", chatV2);
+
+    }
     /**
      * 测试聊天记忆功能
      *

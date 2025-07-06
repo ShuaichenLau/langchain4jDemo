@@ -19,7 +19,8 @@ import org.bson.types.ObjectId;
 @AiService(wiringMode = AiServiceWiringMode.EXPLICIT,
         chatMemory = "chatMemory",
         chatModel = "qwenChatModel",
-        chatMemoryProvider = "chatMemoryProvider"
+        chatMemoryProvider = "chatMemoryProvider",
+        tools = "calculatorTools"
 )
 public interface SeparateChatAssistant {
 
@@ -43,6 +44,14 @@ public interface SeparateChatAssistant {
     @UserMessage("你是我的好朋友, 请用粤语回答问题 {{message}}")
     String chatV1(@MemoryId ObjectId memoryId,  @V("message") String userMessage);
 
+    /**
+     *
+     * @param memoryId
+     * @param userMessage
+     * @return
+     */
+    @UserMessage("你是我的好朋友, 请用普通话回答问题 {{message}}")
+    String chatV2(@MemoryId ObjectId memoryId,  @V("message") String userMessage);
     /**
      *
      *@SystemMessage (系统消息)

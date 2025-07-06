@@ -74,7 +74,6 @@
         </dependency>
 
 
-
         <!-- Reactor Core (必需) -->
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -86,6 +85,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <!-- Mysql Connector -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+        <!--mybatis-plus 持久层-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
 
@@ -139,9 +150,33 @@
                 <scope>import</scope>
             </dependency>
 
-
         </dependencies>
-
     </dependencyManagement>
+
+
+    <build>
+        <!--资源插件，使maven在编译时将src/main/java下的指定的文件拷贝到target/classes中-->
+        <resources>
+            <resource>
+                <!--directory，指定要拷贝的目录-->
+                <directory>src/main/java</directory>
+                <includes>
+                    <!--指定目录下的文件，将所有properties后缀和xml后缀的文件都拷贝到target/classes中-->
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <!-- false表示不启用过滤器，因为上面*.properties已经起到过滤作用了-->
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>
