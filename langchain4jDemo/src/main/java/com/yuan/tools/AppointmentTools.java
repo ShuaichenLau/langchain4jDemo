@@ -58,6 +58,12 @@ public class AppointmentTools {
                                     @P(value = "医生名称", required = false) String doctorName) {
         logger.info("查询预约挂号 科室名称[{}]  日期[{}]  时间[{}]  医生名称[{}] ", department, date, time, doctorName);
 
+
+        /**
+         * todo   完善号源表  定制可以查询的科室,时间,医生
+         * todo    by liusc 2025年7月7日06:48:43
+         */
+
         LambdaQueryWrapper<Appointment> appointmentLambdaQueryWrapper = new LambdaQueryWrapper<>();
         appointmentLambdaQueryWrapper.eq(Appointment::getDepartment, department);
         appointmentLambdaQueryWrapper.eq(Appointment::getDate, date);
@@ -66,8 +72,10 @@ public class AppointmentTools {
 
         Appointment oneByUsernameAndIdCard = appointmentService.getOne(appointmentLambdaQueryWrapper);
         if (Objects.isNull(oneByUsernameAndIdCard)) {
+//            return "有号源";
             return true;
         }
+//        return "无号源";
         return false;
     }
 }

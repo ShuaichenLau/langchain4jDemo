@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yuan.bean.ChatMessages;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -19,6 +20,8 @@ import java.util.Date;
 @SpringBootTest(classes = LangChainDemoMain.class)
 public class MongoCurdTest {
 
+
+    private Logger log = org.slf4j.LoggerFactory.getLogger(MongoCurdTest.class);
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -42,8 +45,9 @@ public class MongoCurdTest {
      */
     @Test
     public void testGet() {
-        ChatMessages chatMessages = mongoTemplate.findById("6862f1d801b7ae5a0e1bab71", ChatMessages.class);
-        System.out.println(JSON.toJSON(chatMessages));
+        ChatMessages chatMessages = mongoTemplate.findById("686b6ee162c06d0d2d3146ea", ChatMessages.class);
+        log.info("查询结果：{}", JSON.toJSONString(chatMessages));
+//        System.out.println(JSON.toJSON(chatMessages));
     }
 
 
@@ -53,7 +57,8 @@ public class MongoCurdTest {
     @Test
     public void testUpdate() {
         ChatMessages chatMessages = mongoTemplate.findById("6862f1d801b7ae5a0e1bab71", ChatMessages.class);
-        System.out.println(JSON.toJSON(chatMessages));
+        log.info("查询结果：{}", JSON.toJSONString(chatMessages));
+//        System.out.println(JSON.toJSON(chatMessages));
 
         Criteria criteria = Criteria.where("_id").is("6862f1d801b7ae5a0e1bab71");
         Query query = new Query(criteria);
@@ -63,6 +68,7 @@ public class MongoCurdTest {
         mongoTemplate.upsert(query, update, ChatMessages.class);
 
         //ChatMessages chatMessages = mongoTemplate.findById("6862f1d801b7ae5a0e1bab71",ChatMessages.class);
+        log.info("修改之后的记录：{}", JSON.toJSONString(mongoTemplate.findById("6862f1d801b7ae5a0e1bab71", ChatMessages.class)));
         System.out.println(JSON.toJSON(mongoTemplate.findById("6862f1d801b7ae5a0e1bab71", ChatMessages.class)));
     }
 
@@ -110,12 +116,14 @@ public class MongoCurdTest {
         System.out.println("删除之前的记录");
         //ChatMessages chatMessages = mongoTemplate.findById(id,ChatMessages.class);
         System.out.println(JSON.toJSON(mongoTemplate.findById(id, ChatMessages.class)));
+        log.info("删除之前的记录：{}", JSON.toJSONString(mongoTemplate.findById(id, ChatMessages.class)));
 
         // 执行删除
         mongoTemplate.remove(query,ChatMessages.class);
 
         System.out.println("删除之后的记录");
         System.out.println(JSON.toJSON(mongoTemplate.findById(id, ChatMessages.class)));
+        log.info("删除之后的记录：{}", JSON.toJSONString(mongoTemplate.findById(id, ChatMessages.class)));
 
     }
 

@@ -46,7 +46,7 @@ public class QianWenTest {
     @Test
     public void testDashScopeWanx() {
         WanxImageModel wanxImageModel = WanxImageModel.builder().modelName("wanx2.1-t2i-turbo")
-                .apiKey("sk-0ee8c7f6e1034cbe9f948fe80586146e1").build();
+                .apiKey("sk-0ee8c7f6e1034cbe9f948fe80586146e").build();
 
         Response<Image> imageResponse = wanxImageModel.generate("奇幻森林精灵：在一片弥漫着轻柔薄雾的" +
                 "古老森林深处，阳光透过茂密枝叶洒下金色光斑。一位身材娇小、长着透明薄翼的精灵少女站在一朵硕大的蘑菇上。她" +
