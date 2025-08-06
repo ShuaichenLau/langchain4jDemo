@@ -5,6 +5,7 @@ import com.yuan.service.impl.RagTestServiceImpl;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
 import dev.langchain4j.data.document.parser.TextDocumentParser;
+import dev.langchain4j.data.document.parser.apache.pdfbox.ApachePdfBoxDocumentParser;
 import dev.langchain4j.data.document.splitter.DocumentByParagraphSplitter;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.embedding.onnx.HuggingFaceTokenizer;
@@ -84,6 +85,35 @@ public class RagTest {
             logger.error("异常信息", e);
         }
     }
+
+
+    /**
+     * pdf 文档解析器  ApachePdfBoxDocumentParser
+     */
+    @Test
+    public void testReadPdf() {
+
+        try {
+            String path = "D:\\BaiduNetdiskDownload\\尚硅谷AI大模型生态\\大模型应用实战\\硅谷小智（医疗版）\\资料\\knowledge";
+
+            // 从一个目录中加载所有的.txt文档     全局查找txt文件
+            PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:*.pdf");
+            List<Document> documents3 = FileSystemDocumentLoader.loadDocuments(path, pathMatcher, new ApachePdfBoxDocumentParser());
+            System.out.println("************************************************");
+            for (Document document3_2 : documents3) {
+                RagTestEntity ragTestEntity = new RagTestEntity();
+                ragTestEntity.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+                ragTestEntity.setMedata(document3_2.metadata().toString());
+                ragTestEntity.setText(document3_2.text());
+                ragTestService.save(ragTestEntity);
+
+            }
+
+        } catch (Exception e) {
+            logger.error("异常信息", e);
+        }
+    }
+
 
 
     /**
