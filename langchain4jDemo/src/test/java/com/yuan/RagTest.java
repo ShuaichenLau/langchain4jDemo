@@ -1,5 +1,6 @@
 package com.yuan;
 
+import com.alibaba.fastjson.JSON;
 import com.yuan.entity.RagTestEntity;
 import com.yuan.service.impl.RagTestServiceImpl;
 import dev.langchain4j.data.document.Document;
@@ -117,13 +118,26 @@ public class RagTest {
 
 
     /**
+     *
+     * 第三阶段  文档分割器
      * 文档分割器
+     *
+     * LangChain4j 有一个 “文档分割器”（DocumentSplitter）接口，并且提供了几种开箱即用的实现方式：
+     * 按段落文档分割器（DocumentByParagraphSplitter）
+     * 按行文档分割器（DocumentByLineSplitter）
+     * 按句子文档分割器（DocumentBySentenceSplitter）
+     * 按单词文档分割器（DocumentByWordSplitter）
+     * 按字符文档分割器（DocumentByCharacterSplitter）
+     * 按正则表达式文档分割器（DocumentByRegexSplitter）
+     * 递归分割：DocumentSplitters.recursive (...)
+     * 默认情况下每个文本片段最多不能超过300个token
+     *
      */
     @Test
     public void testReadDocumentSplitter() {
 
         // 使用FileSystemDocumentLoader读取指定目录下的知识库文档
-        Document document = FileSystemDocumentLoader.loadDocument("D:\\迅雷下载\\README.md");
+        Document document = FileSystemDocumentLoader.loadDocument("D:\\BaiduNetdiskDownload\\尚硅谷AI大模型生态\\大模型应用实战\\硅谷小智（医疗版）\\资料\\knowledge\\科室信息.md");
         System.out.println(document.text());
 
 
@@ -135,6 +149,7 @@ public class RagTest {
 
 
         /**
+         * ingest方法包含3个步骤
          * 1.分割文档 默认使用递归分割器 将文档分割为多个文本片段  每个片段包含不超过 300个token，并且有 30个token的重叠部分保证连贯性
          * 2.文本向量化, 使用一个langchain4j内置的轻量化向量模型对每个文本片段进行向量化
          * 3.将原始文本和向量存储在向量数据库中(InMemoryEmbeddingStore)
@@ -153,6 +168,8 @@ public class RagTest {
                 30,
                 //token分词器：按token计算
                 new HuggingFaceTokenizer());
+
+        logger.info("文档分割器：{} ==>[{}]", documentSplitter, JSON.toJSON(documentSplitter));
 
         //按字符计算
         //DocumentByParagraphSplitter documentSplitter = new DocumentByParagraphSplitter(300, 30);
