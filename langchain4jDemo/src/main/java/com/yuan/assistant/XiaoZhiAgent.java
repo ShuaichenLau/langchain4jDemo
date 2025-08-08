@@ -19,7 +19,8 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
         chatModel = "qwenChatModel",
         chatMemoryProvider = "chatMemoryProviderXiaoZhi",
         tools = "appointmentTools",
-        contentRetriever = "contentRetrieverXiaozhi"  // 配置向量存储 (2025年8月8日22:46:22添加)
+        // contentRetriever = "contentRetrieverXiaozhi"  // 配置向量存储 (2025年8月8日22:46:22添加)
+        contentRetriever = "contentRetrieverXiaozhiPincone"  // 配置AWS云向量存储 (2025年8月9日02:48:35添加)
 )
 public interface XiaoZhiAgent {
 

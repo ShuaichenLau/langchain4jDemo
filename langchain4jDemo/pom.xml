@@ -60,12 +60,16 @@
             <artifactId>langchain4j-easy-rag</artifactId>
         </dependency>
 
-        <!--pinecone 向量-->
+        <!--pinecone 云向量存储-->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-pinecone</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>io.pinecone</groupId>-->
+<!--            <artifactId>pinecone-client</artifactId>-->
+<!--        </dependency>-->
 
         <!-- 接入ollama -->
         <dependency>
