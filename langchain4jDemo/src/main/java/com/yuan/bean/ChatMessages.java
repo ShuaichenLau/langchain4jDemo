@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,7 +21,7 @@ public class ChatMessages {
 
     @Id
 //    private Long messageId;
-    private ObjectId messageId;
+    private String messageId;
 
     private String memoryId;
 

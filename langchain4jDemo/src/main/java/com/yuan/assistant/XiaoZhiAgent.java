@@ -5,6 +5,7 @@ import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
 import dev.langchain4j.service.spring.AiServiceWiringMode;
+import reactor.core.publisher.Flux;
 
 /**
  * 创建硅谷小智
@@ -16,7 +17,8 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
  */
 @AiService(wiringMode = AiServiceWiringMode.EXPLICIT,
         chatMemory = "chatMemory",
-        chatModel = "qwenChatModel",
+//        chatModel = "qwenChatModel",
+        streamingChatModel = "qwenStreamingChatModel",
         chatMemoryProvider = "chatMemoryProviderXiaoZhi",
         tools = "appointmentTools",
         // contentRetriever = "contentRetrieverXiaozhi"  // 配置向量存储 (2025年8月8日22:46:22添加)
@@ -31,7 +33,7 @@ public interface XiaoZhiAgent {
      * @return
      */
     @SystemMessage(fromResource = "zhaozhi-prompt-template.txt")
-    String chat(@MemoryId Object memoryId, @UserMessage String userMessage);
+    Flux<String> chat(@MemoryId String memoryId, @UserMessage String userMessage);
 
 
 }

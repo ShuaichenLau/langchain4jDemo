@@ -53,7 +53,7 @@ public class XiaoZhiAgentConfig {
         return memoryId ->
                 MessageWindowChatMemory.builder()
                         .id(memoryId)
-                        .maxMessages(20) // 20条记忆消息 只能承受10轮会话
+                        .maxMessages(30) // 20条记忆消息 只能承受10轮会话
                         .chatMemoryStore(mongoChatMemoryStore)
                         .build();
 

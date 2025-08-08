@@ -1,16 +1,20 @@
 package com.yuan.bean;
 
+import org.springframework.data.annotation.Id;
+
 public class XiaoZhiChatForm {
 
-    private Object memoryId; // 对话ID
+    @Id
+    private String memoryId; // 对话ID
 
     private String message; // 用户问题
 
-    public Object getMemoryId() {
+
+    public String getMemoryId() {
         return memoryId;
     }
 
-    public void setMemoryId(Object memoryId) {
+    public void setMemoryId(String memoryId) {
         this.memoryId = memoryId;
     }
 

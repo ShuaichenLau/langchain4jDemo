@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 @Tag(name = "XiaoZhiController_硅谷小智", description = "XiaoZhiController")
 @RestController
@@ -29,8 +30,8 @@ public class XiaoZhiController {
      * @return
      */
     @Operation(summary = "XiaoZhiController_开始对话")
-    @PostMapping("/chat")
-    public String chat(@RequestBody XiaoZhiChatForm chatForm) {
+    @PostMapping(value = "/chat",produces = "text/stream;charset=UTF-8")
+    public Flux<String> chat(@RequestBody XiaoZhiChatForm chatForm) {
         logger.info("XiaoZhiController.chat() {}", JSON.toJSONString(chatForm));
         return xiaoZhiAgent.chat(chatForm.getMemoryId(), chatForm.getMessage());
     }
