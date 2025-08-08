@@ -21,7 +21,14 @@ public class AppointmentTools {
     @Autowired
     private AppointmentService appointmentService;
 
-    @Tool(name = "预约挂号,记录挂号记录", value = "根据参数,先执行queryAppointment方法查询患者信息是否可以预约,并直接给患者回答是否可以预约,患者回复确认后在进行预约挂号")
+    /**
+     *
+     * @param appointment
+     * @return
+     */
+    @Tool(name = "预约挂号,记录挂号记录", value = "根据参数,先执行queryAppointment方法查询患者信息是否可以预约,并直接给患者回答是否可以预约," +
+            "患者回复确认后在进行预约挂号," +
+            "如果患者没有提供具体的医生姓名,请从向量存储中找到一位医生")
     public String bookAppointment(Appointment appointment) {
         logger.info("1查找对应的预约记录 {} ", JSON.toJSONString(appointment));
         appointment.setId(null); // 防止大模型手动赋值 大模型出现幻觉设置ID
@@ -36,6 +43,11 @@ public class AppointmentTools {
         return "您已预约过此号源";
     }
 
+    /**
+     *
+     * @param appointment
+     * @return
+     */
     @Tool(name = "取消预约挂号,删除预约挂号记录", value = "根据参数,查询预约是否存在,如果存在则删除,并返回给患者取消预约成功,否则返回给患者取消预约失败")
     public String cancelBookAppointment(Appointment appointment) {
         logger.info("2查找对应的预约记录 {} ", JSON.toJSONString(appointment));
