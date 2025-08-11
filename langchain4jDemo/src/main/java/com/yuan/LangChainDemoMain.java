@@ -3,6 +3,10 @@ package com.yuan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 启动类
+ * @author rog
+ */
 @SpringBootApplication
 public class LangChainDemoMain {
     public static void main(String[] args) {
