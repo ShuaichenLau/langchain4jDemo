@@ -68,7 +68,7 @@ public class XiaoZhiAgentConfig {
     ContentRetriever contentRetrieverXiaozhi() {
 
         logger.info("初始化内容检索器");
-        String path = "D:\\BaiduNetdiskDownload\\尚硅谷AI大模型生态\\大模型应用实战\\硅谷小智（医疗版）\\资料\\knowledge";
+        String path = "D:\\BaiduNetdiskDownload\\大模型应用开发\\项目：小智医疗\\资料\\knowledge";
 
         // 从一个目录中加载所有的.md文档     全局查找md文件
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:*.md");
@@ -108,7 +108,7 @@ public class XiaoZhiAgentConfig {
     ContentRetriever contentRetrieverXiaozhiPincone() {
         // 创建一个 EmbeddingStoreContentRetriever 对象，用于从嵌入存储中检索内容
 
-        String path = "D:\\BaiduNetdiskDownload\\尚硅谷AI大模型生态\\大模型应用实战\\硅谷小智（医疗版）\\资料\\knowledge";
+        String path = "D:\\BaiduNetdiskDownload\\大模型应用开发\\项目：小智医疗\\资料\\knowledge";
 
         // 从一个目录中加载所有的.md文档     全局查找md文件
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:*.md");
